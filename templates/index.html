@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chomp - Restaurant Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <div class="logo-placeholder">🍽️</div>
+                CHOMP
+            </a>
+            <div class="nav-links">
+                <a href="/about" class="nav-link">ABOUT</a>
+                <a href="https://github.com/me50/Zakede/" target="_blank" class="nav-link">GITHUB</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <div class="search-section">
+            <h1 class="main-title">FIND RESTAURANTS</h1>
+            <p class="subtitle">Enter a location to analyze restaurants near you. View cuisines, contact details, and data completeness instantly.</p>
+
+            <div class="search-form">
+                <input
+                    type="text"
+                    id="locationInput"
+                    placeholder="Enter city or address (e.g., Yokohama, Houston, Berlin)"
+                    class="input-field"
+                />
+
+                <div class="radius-container">
+                    <label class="input-label">RADIUS (meters)</label>
+                    <input
+                        type="number"
+                        id="radiusInput"
+                        value="5000"
+                        min="100"
+                        max="50000"
+                        step="100"
+                        class="input-field"
+                    />
+                </div>
+
+                <button id="searchBtn" class="search-btn">
+                    SEARCH
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading-container hidden">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Searching for restaurants...</p>
+        </div>
+
+        <div id="results" class="hidden">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-total">0</div>
+                    <div class="stat-label">TOTAL</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-phone">0</div>
+                    <div class="stat-label">W/ PHONE</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-email">0</div>
+                    <div class="stat-label">W/ EMAIL</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-website">0</div>
+                    <div class="stat-label">W/ WEBSITE</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-cuisine">0</div>
+                    <div class="stat-label">W/ CUISINE</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-address">0</div>
+                    <div class="stat-label">W/ ADDRESS</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3 class="chart-title">DATA COMPLETENESS</h3>
+                    <canvas id="completenessChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3 class="chart-title">TOP CUISINES</h3>
+                    <canvas id="cuisineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <h3 class="table-title">RESTAURANT LIST</h3>
+                <div class="table-container">
+                    <table class="restaurant-table" id="restaurantTable">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>CUISINE</th>
+                                <th>PHONE</th>
+                                <th>WEBSITE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="restaurantTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

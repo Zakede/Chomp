@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Chomp Restaurant Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <div class="logo-placeholder">🍽️</div>
+                CHOMP
+            </a>
+            <div class="nav-links">
+                <a href="/about" class="nav-link">ABOUT</a>
+                <a href="https://github.com/me50/Zakede/" target="_blank" class="nav-link">GITHUB</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="about-hero">
+        <div class="container">
+            <h1>About Chomp</h1>
+            <p>A tool for exploring restaurant data in any city around the world</p>
+        </div>
+    </div>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>What is Chomp?</h2>
+            <p>
+                Chomp lets you search any city and pull up restaurant data from OpenStreetMap — things like cuisine type,
+                phone numbers, websites, and addresses. It's useful for getting a quick snapshot of the dining scene
+                anywhere in the world without needing a paid API.
+            </p>
+            <p>
+                I built it mainly to see how much useful data OSM actually has for restaurants, and it turned out to be
+                pretty solid for most major cities.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Global Search</h3>
+                    <p>Search any city with a customizable radius</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data Stats</h3>
+                    <p>See how complete the data is across phone, email, website, and more</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Charts</h3>
+                    <p>Cuisine breakdown and data completeness visualized with Chart.js</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive</h3>
+                    <p>Works on desktop and mobile</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Open Data</h3>
+                    <p>Powered entirely by OpenStreetMap — no API keys needed</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Retry Logic</h3>
+                    <p>Handles slow or rate-limited API responses automatically</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>How It Works</h2>
+            <p>
+                <strong>1. Location Input:</strong> You type in a city or address and set the search radius (100m to 50km).
+            </p>
+            <p>
+                <strong>2. Geocoding:</strong> Nominatim converts the location name to lat/lon coordinates.
+            </p>
+            <p>
+                <strong>3. Data Fetch:</strong> The Overpass API queries OSM for all restaurants within that radius,
+                pulling whatever tags are available — name, cuisine, phone, website, address, etc.
+            </p>
+            <p>
+                <strong>4. Processing:</strong> The backend parses the response, calculates stats, and saves everything to SQLite.
+            </p>
+            <p>
+                <strong>5. Display:</strong> Results come back as JSON and the frontend renders the charts and table.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Tech Stack</h2>
+            <p>
+                <strong>Backend:</strong> Flask (Python) — handles routing, geocoding requests, Overpass API calls, and SQLite storage.
+            </p>
+            <p>
+                <strong>Frontend:</strong> Plain HTML, CSS, and vanilla JS. No frontend framework, kept it simple.
+            </p>
+            <p>
+                <strong>Charts:</strong> Chart.js for the bar and doughnut charts.
+            </p>
+            <p>
+                <strong>Data:</strong> OpenStreetMap via Nominatim (geocoding) and Overpass API (restaurant data).
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Credits</h2>
+            <p>
+                <strong>OpenStreetMap</strong> — the actual data behind everything.
+            </p>
+            <p>
+                <strong>Nominatim & Overpass API</strong> — the interfaces that make querying OSM data practical.
+            </p>
+            <p>
+                <strong>Chart.js</strong> — straightforward charting library that does what it needs to.
+            </p>
+            <p>
+                <strong>Google Fonts</strong> — Fredoka and Inter.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>About This Project</h2>
+            <p>
+                This was built as a final project for CS50x. The goal was to put together a full-stack web app that
+                actually does something useful — real API integration, a database, and a frontend that makes the data
+                readable. Ended up being a good excuse to dig into how much (and how little) data OSM has depending on the city.
+            </p>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to explore?</h2>
+            <p style="color: var(--dark-green); margin-bottom: 1.5rem; font-size: 1.1rem;">
+                Start discovering restaurants in cities around the world
+            </p>
+            <a href="/" class="cta-button">Start Searching</a>
+        </div>
+    </div>
+
+</body>
+</html>
